@@ -1,0 +1,33 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.o
+
+# Go build cache, modules, etc.
+bin/
+build/
+dist/
+coverage.out
+
+# Vendor (si tu l'utilises)
+vendor/
+
+# Logs
+*.log
+
+# Editor / VSCode / JetBrains
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files (si tu en utilises pour clés API)
+.env
+.env.*

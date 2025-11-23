@@ -1,140 +1,138 @@
 # 🚀 PromptCache
 
-### **Cut your LLM bill by 80%. Speed up your app by 100x.**
-**The intelligent semantic cache for high-scale GenAI applications.**
+### **Reduce your LLM costs. Accelerate your application.**
 
-![Go](https://img.shields.io/badge/Go-1.25+-00ADD8?style=flat&logo=go)
+**A smart semantic cache for high-scale GenAI workloads.**
+
+![Go](https://img.shields.io/badge/Go-1.25+-00ADD8?style=flat\&logo=go)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![PromptCache Demo](assets/demo.png)
 
 ---
 
-## 💰 The Business Problem
+## 💰 The Problem
 
-In production, **30-50% of LLM requests are redundant**.
+In production, **a large percentage of LLM requests are repetitive**:
 
-*   **RAG Applications**: Users ask similar questions ("How do I reset my password?" vs "Reset password steps").
-*   **Agents**: Agents often run identical reasoning loops or tool calls.
-*   **Customer Support**: The same issues come up thousands of times.
+* **RAG applications**: Variations of the same employee questions
+* **AI Agents**: Repeated reasoning steps or tool calls
+* **Support Bots**: Thousands of similar customer queries
 
-Every redundant call costs you money (tokens) and time (latency). **Why pay OpenAI to generate the same answer twice?**
+Every redundant request means **extra token cost** and **extra latency**.
+
+Why pay your LLM provider multiple times for the *same answer*?
 
 ---
 
 ## 💡 The Solution: PromptCache
 
-PromptCache is a middleware that sits between your app and your LLM provider. It uses **semantic understanding** to detect when a new prompt means the same thing as a previous one.
-
-### 📉 Business Impact
-
-| Metric | Without Cache | With PromptCache | Impact |
-| :--- | :--- | :--- | :--- |
-| **Cost per 1k Requests** | $30.00 | **$6.00** | **80% Savings** |
-| **Avg Latency** | 1.5s | **< 10ms** | **Instant UX** |
-| **Throughput** | Limited by API | **Unlimited** | **Scale Freely** |
+PromptCache is a lightweight middleware that sits between your application and your LLM provider.
+It uses **semantic understanding** to detect when a new prompt has *the same intent* as a previous one — and returns the cached result instantly.
 
 ---
 
-## 🎯 Ideal Use Cases
+## 📊 Key Benefits
 
-PromptCache is designed for environments with **high prompt redundancy**:
+| Metric                      | Without Cache | With PromptCache | Benefit      |
+| --------------------------- | ------------- | ---------------- | ------------ |
+| **Cost per 1,000 Requests** | ≈ $30         | **≈ $6**         | Lower cost   |
+| **Average Latency**         | ~1.5s         | **<10ms**        | Faster UX    |
+| **Throughput**              | API-limited   | **Unlimited**    | Better scale |
 
-1.  **RAG & Knowledge Bases**:
-    *   *Scenario*: Multiple employees asking "What is the travel policy?"
-    *   *Result*: First person waits 2s. Everyone else gets it instantly.
-
-2.  **AI Agents & Tool Use**:
-    *   *Scenario*: Agents repeatedly checking status or formatting data.
-    *   *Result*: Drastic reduction in operational costs.
-
-3.  **Customer Support Bots**:
-    *   *Scenario*: Handling FAQs.
-    *   *Result*: Instant answers for users, zero token cost for you.
+Numbers vary per model, but the pattern holds across real workloads:
+**semantic caching dramatically reduces cost and latency**.
 
 ---
 
-## 🧠 Why PromptCache is Safer (Smart Verification)
+## 🧠 Smart Semantic Matching (Safer by Design)
 
-Most semantic caches are risky—they might return a wrong answer if two prompts are *sort of* similar but have different intents.
+Naive semantic caches can be risky — they may return incorrect answers when prompts look similar but differ in intent.
 
-PromptCache uses a **Smart Verification Layer** to guarantee accuracy:
+PromptCache uses a **two-stage verification strategy** to ensure accuracy:
 
-1.  **Obvious Match (>95%)**: Instant Hit.
-2.  **Obvious Miss (<70%)**: Instant Miss.
-3.  **The "Gray Zone" (70-95%)**: **AI Verification**.
-    *   We ask a small, cheap model: *"Do these two prompts have the exact same intent?"*
-    *   **This ensures 100% semantic accuracy.** You never serve a wrong cached response.
+1. **High similarity → direct cache hit**
+2. **Low similarity → skip cache directly**
+3. **Gray zone → intent check using a small, cheap verification model**
+
+This ensures cached responses are **semantically correct**, not just “close enough”.
 
 ---
 
 ## 🚀 Quick Start
 
-PromptCache is a drop-in replacement for the OpenAI API.
+PromptCache works as a **drop-in replacement** for the OpenAI API.
 
-### 1. Run the Server
+### 1. Run the server
 
 ```bash
-# Clone and run
 git clone https://github.com/messkan/prompt-cache.git
 cd prompt-cache
 make run
 ```
 
-### 2. Connect Your App
+### 2. Update your client
 
-Just change the `base_url` in your SDK. No code changes required.
+Simply change the `base_url` in your SDK:
 
 ```python
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="http://localhost:8080/v1",  # <--- Point to PromptCache
+    base_url="http://localhost:8080/v1",  # Point to PromptCache
     api_key="sk-..."
 )
 
-# This call hits OpenAI (Cost: $0.01, Time: 1.2s)
+# First request → goes to the LLM provider
 client.chat.completions.create(
     model="gpt-4",
     messages=[{"role": "user", "content": "Explain quantum physics"}]
 )
 
-# This call hits PromptCache (Cost: $0.00, Time: 0.005s)
-# Even though the phrasing is different!
+# Semantically similar request → served from PromptCache
 client.chat.completions.create(
     model="gpt-4",
     messages=[{"role": "user", "content": "How does quantum physics work?"}]
 )
 ```
 
----
-
-## 🏗 Architecture
-
-Designed for performance and reliability:
-*   **Language**: Pure Go (Zero garbage collection pauses, high concurrency).
-*   **Storage**: BadgerDB (Embedded, persistent, fast).
-*   **API**: 100% OpenAI Compatible.
+No code changes. Just point your client to PromptCache.
 
 ---
 
-## � Roadmap
+## 🏗 Architecture Overview
+
+Built for speed, safety, and reliability:
+
+* **Pure Go implementation** (high concurrency, minimal overhead)
+* **BadgerDB** for fast embedded persistent storage
+* **In-memory caching** for ultra-fast responses
+* **OpenAI-compatible API** for seamless integration
+
+---
+
+## 🛣️ Roadmap
 
 ### ✔️ v0.1 (Current)
-*   In-memory & BadgerDB storage.
-*   Smart Semantic Verification (Dual-threshold + LLM check).
-*   OpenAI API Compatibility.
 
-### 🚧 v0.2 (Coming Soon)
-*   **Redis Support**: For distributed caching across multiple instances.
-*   **Dashboard UI**: Visualize cache hit rates, latency savings, and costs.
-*   **Native Providers**: Direct support for Anthropic (Claude) and Mistral.
+* In-memory & BadgerDB storage
+* Smart semantic verification (dual-threshold + intent check)
+* OpenAI API compatibility
+
+### 🚧 v0.2
+
+* Redis backend for distributed caching
+* Web dashboard (hit rate, latency, cost metrics)
+* Built-in support for Claude & Mistral APIs
 
 ### 🚀 v1.0
-*   **Cluster Mode**: Raft-based distributed consensus.
-*   **Custom Embedding Models**: Support for local embedding models (e.g., via Ollama).
-*   **Rate Limiting**: Built-in token bucket rate limiter.
+
+* Clustered mode (Raft or gossip-based replication)
+* Custom embedding backends (Ollama, local models)
+* Rate-limiting & request shaping
 
 ---
 
-## �📄 License
+## 📄 License
 
-MIT License. Built for scale.
+MIT License.

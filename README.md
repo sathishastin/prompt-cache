@@ -110,7 +110,7 @@ Built for speed, safety, and reliability:
 * **BadgerDB** for fast embedded persistent storage
 * **In-memory caching** for ultra-fast responses
 * **OpenAI-compatible API** for seamless integration
-
+* **Docker Setup**
 ---
 
 ## 🛣️ Roadmap

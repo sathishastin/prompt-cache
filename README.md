@@ -9,6 +9,9 @@
 
 ![PromptCache Demo](assets/demo.png)
 
+> [!WARNING]
+> **v0.1.0 is currently in Alpha.** It is not yet production-ready.
+> Significant improvements in stability, performance, and configuration are coming in v0.2.0.
 ---
 
 ## 💰 The Problem
@@ -119,23 +122,33 @@ Built for speed, safety, and reliability:
 
 ## 🛣️ Roadmap
 
-### ✔️ v0.1 (In progress - not stable)
+### ✔️ v0.1.0 (Released)
 
 * In-memory & BadgerDB storage
 * Smart semantic verification (dual-threshold + intent check)
 * OpenAI API compatibility
 
-### 🚧 v0.2
+### 🚧 v0.2.0 (Planned)
 
-* Redis backend for distributed caching
-* Web dashboard (hit rate, latency, cost metrics)
+* **Core Improvements**: Bug fixes and performance optimizations.
+* **Public API**: Improve cache create/delete operations.
+* **Enhanced Configuration**:
+    * Configurable "gray zone" fallback model (enable/disable env var).
+    * User-definable similarity thresholds with sensible defaults.
+
+### 🚧 v0.3.0 (Planned)
 * Built-in support for Claude & Mistral APIs
 
-### 🚀 v1.0
+### 🚀 v1.0.0
 
 * Clustered mode (Raft or gossip-based replication)
 * Custom embedding backends (Ollama, local models)
 * Rate-limiting & request shaping
+* Web dashboard (hit rate, latency, cost metrics)
+
+### ❤️ Support the Project
+
+We are working hard to reach **v1.0.0**! If you find this project useful, please give it a ⭐️ on GitHub and consider contributing. Your support helps us ship v0.2.0 and v1.0.0 faster!
 
 ---
 

